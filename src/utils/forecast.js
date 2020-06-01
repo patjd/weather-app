@@ -7,7 +7,9 @@ const forecast = (longitude, latitude, callback) => {
             const temperature = response.data.currently.temperature
             const precipProbability = response.data.currently.precipProbability
             const summary = response.data.daily.data[0].summary
-            const data = summary + ' It is currently ' + temperature + ' degrees out. There is a ' + precipProbability + '% chance of rain.'
+            const temperatureMin = response.data.daily.data[0].temperatureMin
+            const temperatureMax = response.data.daily.data[0].temperatureMax
+            const data = summary + ' It is currently ' + temperature + ' degrees out. There is a ' + precipProbability + '% chance of rain. High temperature for day is ' + temperatureMax + ' degrees and low temperature for day is ' + temperatureMin + ' degrees.'
             callback(undefined, data)
         })
         .catch(error => {
